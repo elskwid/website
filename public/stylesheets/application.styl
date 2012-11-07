@@ -458,6 +458,31 @@ form.vote
   #countdown
     display inline-block
     font-weight bold
+  .timeline
+    margin 1em 0
+    color gray
+    tr
+      vertical-align top
+    .time
+      text-align center
+      padding-right 1em
+    .details, .countdown
+      display none
+    .old tr:first-child
+      text-decoration line-through
+    .next
+      color black
+      tr:first-child
+        font-weight bold
+        td
+          padding-top 0.5em
+      .countdown
+        display block
+        margin 0
+      .details
+        display table-row
+        p
+          margin 0.5em 0
   .ps
     margin-top 2em
     color gray

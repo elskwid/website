@@ -40,7 +40,7 @@ app.db.app = app;  // sooo hacky
 // state (getting pretty gross)
 app.disable('registration');  // months beforehand
 app.enable('pre-coding');     // week beforehand
-app.disable('coding');        // coding + several hours before
+app.enable('coding');        // coding + several hours before
 app.disable('voting');        // after
 
 app.configure(function() {
@@ -81,6 +81,7 @@ app.configure(function() {
         'vendor/jquery.transform.light.js',
         'vendor/jquery.transloadit2.js',
         'vendor/md5.js',
+        'vendor/moment.js',
         'vendor/underscore-1.3.3.js',
         'watchmaker.js',
         'application.coffee',
