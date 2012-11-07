@@ -6,9 +6,22 @@ load = ->
 
     $('table.timeline').each ->
       $table = $(this)
+      $next = null
+
+      setNext = (tbody) ->
+        $next = $(tbody).closest('tbody').attr('class', 'next')
+        $next
+          .prev('tbody').attr('class', 'current')
+          .prevAll('tbody').attr('class', 'old')
+        $next.nextAll('tbody').attr('class', null)
+
+        $('.details', $table).height 0
+        details = $next.prev('tbody').find('.details').css('height', 'auto')
+        details.height details.height()
+
+      $table.on 'click', 'tr.header', -> setNext this
 
       now = new Date
-      $next = null
       $('tbody', $table).each ->
         $tbody = $(this)
 
@@ -19,9 +32,9 @@ load = ->
 
         # set which one is next
         if t < now
-          $(this).addClass('old')
-        else
-          $next ||= $(this).addClass('next')
+          $(this).prev('tbody').addClass('old')
+        else if $next is null
+          setNext this
 
       # countdown
       parts = (s) ->
@@ -30,22 +43,22 @@ load = ->
       pad = (s) -> if s >= 10 then s else '0' + s
 
       do tick = ->
-        now = new Date
-        t = $next.data('moment')
-        diff = t - now - skew
+        diff = $next.data('moment') - new Date - skew
+
+        return if isNaN diff
+
         if diff > 0
+          $countdown = $('td.countdown', $next).text('in ')
+          if $countdown.length is 0
+            $countdown = $('<td class="countdown">in </td>')
+              .appendTo($('tr.header', $next))
           p = parts diff
-          $time = $('[datetime]', $next).empty()
-          $time.text t.format('MMM DD LT')
-          countdown = $('<p class="countdown">').appendTo($time)
-          countdown.append "#{p[0]}d " if p[0]
-          countdown.append _.map(p[1..3], pad).join(':')
+          $countdown.append "#{p[0]}d " if p[0]
+          $countdown.append _.map(p[1..3], pad).join(':')
           setTimeout tick, 800
         else
-          $next = $next
-            .toggleClass('next old')
-            .next('tbody').addClass('next')
-          tick()  # scary
+          setNext $next.next('tbody')
+          tick()
 
 $(load)
 $(document).bind 'end.pjax', load

@@ -1,7 +1,7 @@
 - title('2012')
 
 :markdown
-  Node.js Knockout is a 48-hour node.js hackathon. [Learn more](/about).
+  Node.js Knockout is a 48-hour node.js hackathon. [Learn more](/about)
 
 if registration
   section.when
@@ -32,47 +32,58 @@ else
   table.timeline
     thead: tr: th.time Local Time
     tbody
-      tr
-        td.time( datetime='2012-11-03T00:00:00Z' ) Nov 03 00:00
+      tr.header
+        td.time( datetime='2012-11-03T00:00:00Z' )
         td Registration closes
+      tr: td( colspan=3 ): .details
+        :markdown
+          Be sure to review the [rules](/rules).
+
+          If you're in SF or NYC, be sure to check out team gathering
+          [locations](/locations).
+
+          We'll be setting up [GitHub repos](https://github.com/nko3) and
+          [Nodejitsu](http://nodejitsu.com/) accounts for teams soon. You can
+          still make changes to your team membership, but please remember: no
+          coding nor depoys yet.
     tbody
-      tr
-        td.time( datetime='2012-11-10T00:00:00Z' ) Nov 10 00:00
+      tr.header
+        td.time( datetime='2012-11-10T00:00:00Z' )
         td Coding starts
-      tr.details: td( colspan=2 )
-        p Good pre-info
-    tbody
-      tr
-        td.time( datetime='2012-11-12T00:00:00Z' ) Nov 12 00:00
-        td Coding ends
-      tr.details: td( colspan= 2 )
+      tr: td( colspan=3 ): .details
         p GOGOGO
         p Deploy instructions. Dashboard.
+    tbody
+      tr.header
+        td.time( datetime='2012-11-12T00:00:00Z' )
+        td Coding ends
+      tr: td( colspan=3 ): .details
+        p STOPSTOPSTOP
     //- Grace period
     //- Presentations
     tbody
-      tr
-        td.time( datetime='2012-11-12T01:00:00Z' ) Nov 12 01:00
+      tr.header
+        td.time( datetime='2012-11-12T01:00:00Z' )
         td Contestant, public judging starts
-      tr.details: td( colspan= 2 )
+      tr: td( colspan=3 ): .details
         p judging starts
     tbody
-      tr
-        td.time( datetime='2012-11-12T12:00:00Z' ) Nov 12 12:00
+      tr.header
+        td.time( datetime='2012-11-12T12:00:00Z' )
         td Expert judging starts
-      tr.details: td( colspan= 2 )
+      tr: td( colspan=3 ): .details
         p judging starts
     tbody
-      tr
-        td.time( datetime='2012-11-18T00:00:00Z' ) Nov 18 00:00
+      tr.header
+        td.time( datetime='2012-11-18T00:00:00Z' )
         td Judging ends
-      tr.details: td( colspan= 2 )
+      tr: td( colspan=3 ): .details
         p judging ends
     tbody
-      tr
-        td.time( datetime='2012-11-19T00:00:00Z' ) Nov 19 00:00
+      tr.header
+        td.time( datetime='2012-11-19T00:00:00Z' )
         td Winners announced
-      tr.details: td( colspan= 2 )
+      tr: td( colspan=3 ): .details
         p winners
     
 section.ps

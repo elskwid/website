@@ -460,29 +460,33 @@ form.vote
     font-weight bold
   .timeline
     margin 1em 0
-    color gray
-    tr
-      vertical-align top
+    line-height 150%
+    p
+      margin 0.5em 0
+    .details
+      padding 1px 10px
+      border-radius 2px
+      transition height 200ms ease, background-color 200ms ease
+      height 0
+      overflow hidden
+    .current .details
+      box-shadow inset 0 0 5px hsla(0, 0%, 0%, 0.1)
+      background-color hsl(0, 0%, 95%)
+      background-color hsla(0, 0%, 95%, 0.5)
     .time
       text-align center
       padding-right 1em
-    .details, .countdown
+    .countdown
       display none
-    .old tr:first-child
-      text-decoration line-through
+    .old, .current
+      tr.header
+        text-decoration line-through
+        color gray
     .next
-      color black
-      tr:first-child
-        font-weight bold
-        td
-          padding-top 0.5em
+      font-weight bold
       .countdown
-        display block
-        margin 0
-      .details
-        display table-row
-        p
-          margin 0.5em 0
+        display table-cell
+        color red
   .ps
     margin-top 2em
     color gray
